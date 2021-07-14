@@ -1,0 +1,53 @@
+Check the security in Postman
+Now we will check that we are able to use the username and password to get a JWT token.
+
+Start the server by running the main method
+In postman set the method to post and the endpoint as localhost:8080/authenticate
+Click on Headers
+Add a key of Content-type and a value of application/json
+Click on Body
+click raw
+pass the below json
+{
+    "username":"foo",
+    "password":"foo"
+}
+Hit send to get a jwt token returned
+Change location to /hello and method to get
+Click on Headers
+Add a key of authorization and a value of Bearer ... plus your token (do not include the 3 periods)
+hit send to get Access Denied message
+
+////////////////
+Check the security in Postman
+Now we will check that we are able to use the username and password to get a JWT token.
+
+Start the server by running the main method
+In postman set the method to post and the endpoint as localhost:9090/authenticate
+Click on Headers
+Add a key of Content-type and a value of application/json
+Click on Body
+click raw
+pass the below json
+{
+    "username":"foo",
+    "password":"foo"
+}
+Hit send to get a jwt token returned
+Change location to hello and method to get
+localhost:9090/hello
+Click on Headers
+Add a key of authorization and a value of Bearer (you need to put jwt token after Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmb28iLCJleHAiOjE2MjYzMTUyMTks
+ImlhdCI6MTYyNjI3OTIxOX0.p7ClTTs7OOovVZX3cxwcjreLrdIwyZwQr4Xu-KNoG4 )plus your token (do not include the 3 periods)
+hit send to get Access Denied message
+Check the security in Postman
+Now let's check that subsequent requests can pass the JWT token to access resources.
+
+Start the server by running the main method
+In postman set the method to post and the enpoint as localhost:9090/authenticate
+In the headers section uncheck the authorization key
+Hit send to get a jwt token returned
+Change location to /hello and method to get
+Click on Headers
+Add a key of authorization and a value of Bearer ... plus your token
+hit send to get Hello world message
